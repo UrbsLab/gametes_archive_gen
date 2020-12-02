@@ -55,19 +55,19 @@ def main(argv):
 
     elif use == 'data':
         #Generate core main effect data
-        univariate_core_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
+        #univariate_core_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
         #Generate core epistasis data
-        epistasis_2_locus_core_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
+        #epistasis_2_locus_core_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
         #Generate 3-way epistasis data
-        epistasis_3_locus_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
+        #epistasis_3_locus_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
         #Generate heterogeneous data (2 subgroups of 2-way epistasis)
-        epistasis_2_locus_hetero_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
+        #epistasis_2_locus_hetero_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
         #Generate additive data (2 additively combined 2-way epistasis models, yielding 'impure' epistasis)
-        epistasis_2_locus_additive_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
+        #epistasis_2_locus_additive_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
         #Generate heterogeneous data (2 subgroups of univariate efects)
-        univariate_2_locus_hetero_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
+        #univariate_2_locus_hetero_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
         #Generate additive data (2 subgroups of univariate efects)
-        univariate_2_locus_additive_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
+        #univariate_2_locus_additive_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
         #Generate heterogeneous data (4 subgroups of univariate efects)
         univariate_4_locus_hetero_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
         #Generate additive data (4 subgroups of univariate efects)
@@ -744,7 +744,7 @@ def epistasis_2_locus_quantitative_data(output_path,archive_name,model_dest,job_
                             pass
                         else:
                             os.system(filewrite)
-                            
+
 ######################################
 if __name__ == '__main__':
     sys.exit(main(sys.argv))
