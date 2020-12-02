@@ -239,15 +239,15 @@ def univariate_core_data(output_path,archive_name,model_dest,job_dest,log_dest,r
 
                     if run_parallel:
                         job_ref = str(time.time())
-                        job_path_name = job_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
+                        job_path_name = job_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
                         sh_file = open(job_path_name,'w')
                         sh_file.write('#!/bin/bash\n')
                         sh_file.write('#BSUB -q i2c2_normal'+'\n')
                         sh_file.write('#BSUB -J '+job_ref+'\n')
                         sh_file.write('#BSUB -R "rusage[mem=4G]"'+'\n')
                         sh_file.write('#BSUB -M 15GB'+'\n')
-                        sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
-                        sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
+                        sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
+                        sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
                         sh_file.write(filewrite)
                         sh_file.close()
                         os.system('bsub < '+job_path_name)
@@ -286,15 +286,15 @@ def epistasis_2_locus_core_data(output_path,archive_name,model_dest,job_dest,log
 
                     if run_parallel:
                         job_ref = str(time.time())
-                        job_path_name = job_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
+                        job_path_name = job_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
                         sh_file = open(job_path_name,'w')
                         sh_file.write('#!/bin/bash\n')
                         sh_file.write('#BSUB -q i2c2_normal'+'\n')
                         sh_file.write('#BSUB -J '+job_ref+'\n')
                         sh_file.write('#BSUB -R "rusage[mem=4G]"'+'\n')
                         sh_file.write('#BSUB -M 15GB'+'\n')
-                        sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
-                        sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
+                        sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
+                        sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
                         sh_file.write(filewrite)
                         sh_file.close()
                         os.system('bsub < '+job_path_name)
@@ -333,15 +333,15 @@ def epistasis_3_locus_data(output_path,archive_name,model_dest,job_dest,log_dest
 
                     if run_parallel:
                         job_ref = str(time.time())
-                        job_path_name = job_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
+                        job_path_name = job_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
                         sh_file = open(job_path_name,'w')
                         sh_file.write('#!/bin/bash\n')
                         sh_file.write('#BSUB -q i2c2_normal'+'\n')
                         sh_file.write('#BSUB -J '+job_ref+'\n')
                         sh_file.write('#BSUB -R "rusage[mem=4G]"'+'\n')
                         sh_file.write('#BSUB -M 15GB'+'\n')
-                        sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
-                        sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
+                        sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
+                        sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
                         sh_file.write(filewrite)
                         sh_file.close()
                         os.system('bsub < '+job_path_name)
@@ -382,15 +382,15 @@ def epistasis_2_locus_hetero_data(output_path,archive_name,model_dest,job_dest,l
 
                         if run_parallel:
                             job_ref = str(time.time())
-                            job_path_name = job_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
+                            job_path_name = job_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
                             sh_file = open(job_path_name,'w')
                             sh_file.write('#!/bin/bash\n')
                             sh_file.write('#BSUB -q i2c2_normal'+'\n')
                             sh_file.write('#BSUB -J '+job_ref+'\n')
                             sh_file.write('#BSUB -R "rusage[mem=4G]"'+'\n')
                             sh_file.write('#BSUB -M 15GB'+'\n')
-                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
-                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
+                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
+                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
                             sh_file.write(filewrite)
                             sh_file.close()
                             os.system('bsub < '+job_path_name)
@@ -431,15 +431,15 @@ def epistasis_2_locus_additive_data(output_path,archive_name,model_dest,job_dest
 
                         if run_parallel:
                             job_ref = str(time.time())
-                            job_path_name = job_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
+                            job_path_name = job_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
                             sh_file = open(job_path_name,'w')
                             sh_file.write('#!/bin/bash\n')
                             sh_file.write('#BSUB -q i2c2_normal'+'\n')
                             sh_file.write('#BSUB -J '+job_ref+'\n')
                             sh_file.write('#BSUB -R "rusage[mem=4G]"'+'\n')
                             sh_file.write('#BSUB -M 15GB'+'\n')
-                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
-                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
+                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
+                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
                             sh_file.write(filewrite)
                             sh_file.close()
                             os.system('bsub < '+job_path_name)
@@ -480,15 +480,15 @@ def univariate_2_locus_hetero_data(output_path,archive_name,model_dest,job_dest,
 
                         if run_parallel:
                             job_ref = str(time.time())
-                            job_path_name = job_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
+                            job_path_name = job_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
                             sh_file = open(job_path_name,'w')
                             sh_file.write('#!/bin/bash\n')
                             sh_file.write('#BSUB -q i2c2_normal'+'\n')
                             sh_file.write('#BSUB -J '+job_ref+'\n')
                             sh_file.write('#BSUB -R "rusage[mem=4G]"'+'\n')
                             sh_file.write('#BSUB -M 15GB'+'\n')
-                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
-                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
+                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
+                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
                             sh_file.write(filewrite)
                             sh_file.close()
                             os.system('bsub < '+job_path_name)
@@ -529,15 +529,15 @@ def univariate_2_locus_additive_data(output_path,archive_name,model_dest,job_des
 
                         if run_parallel:
                             job_ref = str(time.time())
-                            job_path_name = job_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
+                            job_path_name = job_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
                             sh_file = open(job_path_name,'w')
                             sh_file.write('#!/bin/bash\n')
                             sh_file.write('#BSUB -q i2c2_normal'+'\n')
                             sh_file.write('#BSUB -J '+job_ref+'\n')
                             sh_file.write('#BSUB -R "rusage[mem=4G]"'+'\n')
                             sh_file.write('#BSUB -M 15GB'+'\n')
-                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
-                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
+                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
+                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
                             sh_file.write(filewrite)
                             sh_file.close()
                             os.system('bsub < '+job_path_name)
@@ -578,15 +578,15 @@ def univariate_4_locus_hetero_data(output_path,archive_name,model_dest,job_dest,
 
                         if run_parallel:
                             job_ref = str(time.time())
-                            job_path_name = job_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
+                            job_path_name = job_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
                             sh_file = open(job_path_name,'w')
                             sh_file.write('#!/bin/bash\n')
                             sh_file.write('#BSUB -q i2c2_normal'+'\n')
                             sh_file.write('#BSUB -J '+job_ref+'\n')
                             sh_file.write('#BSUB -R "rusage[mem=4G]"'+'\n')
                             sh_file.write('#BSUB -M 15GB'+'\n')
-                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
-                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
+                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
+                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
                             sh_file.write(filewrite)
                             sh_file.close()
                             os.system('bsub < '+job_path_name)
@@ -627,15 +627,15 @@ def univariate_4_locus_additive_data(output_path,archive_name,model_dest,job_des
 
                         if run_parallel:
                             job_ref = str(time.time())
-                            job_path_name = job_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
+                            job_path_name = job_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
                             sh_file = open(job_path_name,'w')
                             sh_file.write('#!/bin/bash\n')
                             sh_file.write('#BSUB -q i2c2_normal'+'\n')
                             sh_file.write('#BSUB -J '+job_ref+'\n')
                             sh_file.write('#BSUB -R "rusage[mem=4G]"'+'\n')
                             sh_file.write('#BSUB -M 15GB'+'\n')
-                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
-                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+'W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
+                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
+                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_W_'+str(w)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
                             sh_file.write(filewrite)
                             sh_file.close()
                             os.system('bsub < '+job_path_name)
@@ -680,15 +680,15 @@ def epistasis_2_locus_imbalanced_data(output_path,archive_name,model_dest,job_de
 
                         if run_parallel:
                             job_ref = str(time.time())
-                            job_path_name = job_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
+                            job_path_name = job_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
                             sh_file = open(job_path_name,'w')
                             sh_file.write('#!/bin/bash\n')
                             sh_file.write('#BSUB -q i2c2_normal'+'\n')
                             sh_file.write('#BSUB -J '+job_ref+'\n')
                             sh_file.write('#BSUB -R "rusage[mem=4G]"'+'\n')
                             sh_file.write('#BSUB -M 15GB'+'\n')
-                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
-                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
+                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
+                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
                             sh_file.write(filewrite)
                             sh_file.close()
                             os.system('bsub < '+job_path_name)
@@ -729,15 +729,15 @@ def epistasis_2_locus_quantitative_data(output_path,archive_name,model_dest,job_
 
                         if run_parallel:
                             job_ref = str(time.time())
-                            job_path_name = job_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
+                            job_path_name = job_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
                             sh_file = open(job_path_name,'w')
                             sh_file.write('#!/bin/bash\n')
                             sh_file.write('#BSUB -q i2c2_normal'+'\n')
                             sh_file.write('#BSUB -J '+job_ref+'\n')
                             sh_file.write('#BSUB -R "rusage[mem=4G]"'+'\n')
                             sh_file.write('#BSUB -M 15GB'+'\n')
-                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
-                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+'A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
+                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
+                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
                             sh_file.write(filewrite)
                             sh_file.close()
                             os.system('bsub < '+job_path_name)
