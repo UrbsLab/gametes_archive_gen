@@ -1,7 +1,7 @@
 """
 Author: Ryan Urbanowicz
 Created: 11/30/20
-Description: Script to apply GAMETES to generate and organize a variety of SNP 2-way interaction models and a corresponding Datasets
+Description: Script to apply GAMETES to generate and organize a variety of SNP simulated models and a corresponding datasets
 """
 
 import sys
