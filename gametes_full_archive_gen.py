@@ -756,7 +756,7 @@ def epistasis_2_locus_numfeatures_data(output_path,archive_name,model_dest,job_d
     #Define dataset parameters
     data_name = 'gametes_2way_epistasis_numfeat'
     samplesize = [1600] #[200, 400, 800, 1600, 3200, 6400] #assumes balanced datasets (#cases = #controls)
-    numberofattributes = [1000,10000,100000,1000000] # [20, 100, 1000, 10000, 100000] #[200, 100]
+    numberofattributes = [1000,10000,100000] # [20, 100, 1000, 10000, 100000] #[200, 100]
     AF_Min = 0.01
     AF_Max = 0.5
     replicates = 30 #100
