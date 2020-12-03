@@ -76,6 +76,8 @@ def main(argv):
         epistasis_2_locus_imbalanced_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
         #Generate continuous endpoint data (with 2-way epistasis)
         epistasis_2_locus_quantitative_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
+        #Generate increasing feature count datasets (with 2-way epistasis)
+        epistasis_2_locus_numfeatures_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path)
     else:
         print("GAMETES use not recognized.")
 
@@ -674,21 +676,21 @@ def epistasis_2_locus_imbalanced_data(output_path,archive_name,model_dest,job_de
 
                         modelName = "L_"+str(locus)+"_H_"+str(h)+"_F_"+str(m)+'_K_'+str(K)
                         modelFile = model_dest+'/'+modelName+"_Models.txt"
-                        genDataName = output_path+'/'+archive_name+'/'+data_name+'/'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_'+str(modelName)
+                        genDataName = output_path+'/'+archive_name+'/'+data_name+'/'+data_name+'_'+str(b)+'_A_'+str(n)+'_S_'+str(s)+'_'+str(modelName)
                         #Create gametes run command
                         filewrite = 'java -jar '+this_file_path+'/gametes_2.2_dev.jar -i '+modelFile+' -D "-n '+str(AF_Min)+' -x '+str(AF_Max)+' -a '+str(n)+' -s '+str(caseCount)+' -w '+str(controlCount)+' -r '+str(replicates)+' -o '+str(genDataName)+'"'
 
                         if run_parallel:
                             job_ref = str(time.time())
-                            job_path_name = job_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
+                            job_path_name = job_dest+'/gametes_'+data_name+'_'+str(b)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
                             sh_file = open(job_path_name,'w')
                             sh_file.write('#!/bin/bash\n')
                             sh_file.write('#BSUB -q i2c2_normal'+'\n')
                             sh_file.write('#BSUB -J '+job_ref+'\n')
                             sh_file.write('#BSUB -R "rusage[mem=4G]"'+'\n')
                             sh_file.write('#BSUB -M 15GB'+'\n')
-                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
-                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
+                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_'+str(b)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
+                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_'+str(b)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
                             sh_file.write(filewrite)
                             sh_file.close()
                             os.system('bsub < '+job_path_name)
@@ -723,27 +725,74 @@ def epistasis_2_locus_quantitative_data(output_path,archive_name,model_dest,job_
                     for d in standardDev:
                         modelName = "L_"+str(locus)+"_H_"+str(h)+"_F_"+str(m)+'_K_'+str(K)
                         modelFile = model_dest+'/'+modelName+"_Models.txt"
-                        genDataName = output_path+'/'+archive_name+'/'+data_name+'/'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_'+str(modelName)
+                        genDataName = output_path+'/'+archive_name+'/'+data_name+'/'+data_name+'_'+str(d)+'_A_'+str(n)+'_S_'+str(s)+'_'+str(modelName)
                         #Create gametes run command
                         filewrite = 'java -jar '+this_file_path+'/gametes_2.2_dev.jar -i '+modelFile+' -D "-c -d '+ str(d) + ' -t '+ str(s) + ' -n '+str(AF_Min)+' -x '+str(AF_Max)+' -a '+str(n)+' -r '+str(replicates)+' -o '+str(genDataName)+'"'
 
                         if run_parallel:
                             job_ref = str(time.time())
-                            job_path_name = job_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
+                            job_path_name = job_dest+'/gametes_'+data_name+'_'+str(d)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
                             sh_file = open(job_path_name,'w')
                             sh_file.write('#!/bin/bash\n')
                             sh_file.write('#BSUB -q i2c2_normal'+'\n')
                             sh_file.write('#BSUB -J '+job_ref+'\n')
                             sh_file.write('#BSUB -R "rusage[mem=4G]"'+'\n')
                             sh_file.write('#BSUB -M 15GB'+'\n')
-                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
-                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
+                            sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_'+str(d)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
+                            sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_'+str(d)+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
                             sh_file.write(filewrite)
                             sh_file.close()
                             os.system('bsub < '+job_path_name)
                             pass
                         else:
                             os.system(filewrite)
+
+def epistasis_2_locus_numfeatures_data(output_path,archive_name,model_dest,job_dest,log_dest,run_parallel,this_file_path):
+    #Model parameters needed
+    locus = 2
+    heritability = [0.4]
+    minorAF = [0.2]
+    K = 0.3  #population prevelance
+    #Define dataset parameters
+    data_name = 'gametes_2way_epistasis_numfeat'
+    samplesize = [1600] #[200, 400, 800, 1600, 3200, 6400] #assumes balanced datasets (#cases = #controls)
+    numberofattributes = [1000,10000,100000,1000000] # [20, 100, 1000, 10000, 100000] #[200, 100]
+    AF_Min = 0.01
+    AF_Max = 0.5
+    replicates = 30 #100
+
+    #Make dataset folder
+    if not os.path.exists(output_path+'/'+archive_name+'/'+data_name):
+        os.mkdir(output_path+'/'+archive_name+'/'+data_name)
+
+    #Generate datasets and folders
+    for n in numberofattributes:
+        for s in samplesize:
+            for h in heritability:
+                for m in minorAF:
+                    modelName = "L_"+str(locus)+"_H_"+str(h)+"_F_"+str(m)+'_K_'+str(K)
+                    modelFile = model_dest+'/'+modelName+"_Models.txt"
+                    genDataName = output_path+'/'+archive_name+'/'+data_name+'/'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_'+str(modelName)
+                    #Create gametes run command
+                    filewrite = 'java -jar '+this_file_path+'/gametes_2.2_dev.jar -i '+modelFile+' -D "-n '+str(AF_Min)+' -x '+str(AF_Max)+' -a '+str(n)+' -s '+str(int(s/2))+' -w '+str(int(s/2))+' -r '+str(replicates)+' -o '+str(genDataName)+'"'
+
+                    if run_parallel:
+                        job_ref = str(time.time())
+                        job_path_name = job_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'_run.sh'
+                        sh_file = open(job_path_name,'w')
+                        sh_file.write('#!/bin/bash\n')
+                        sh_file.write('#BSUB -q i2c2_normal'+'\n')
+                        sh_file.write('#BSUB -J '+job_ref+'\n')
+                        sh_file.write('#BSUB -R "rusage[mem=4G]"'+'\n')
+                        sh_file.write('#BSUB -M 15GB'+'\n')
+                        sh_file.write('#BSUB -o ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.o\n')
+                        sh_file.write('#BSUB -e ' + log_dest+'/gametes_'+data_name+'_A_'+str(n)+'_S_'+str(s)+'_H_'+str(h)+'_F_'+str(m)+'_'+job_ref+'.e\n')
+                        sh_file.write(filewrite)
+                        sh_file.close()
+                        os.system('bsub < '+job_path_name)
+                        pass
+                    else:
+                        os.system(filewrite)
 
 ######################################
 if __name__ == '__main__':
